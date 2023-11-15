@@ -10,7 +10,6 @@ char *swap_char(char *input, int bool)
 {
 	int i;
 
-	// Swap special characters based on the bool flag
 	if (bool == 0)
 	{
 		for (i = 0; input[i]; i++)
@@ -55,10 +54,8 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *input)
 	int i;
 	char *line;
 
-	// Swap special characters in the input string
 	input = swap_char(input, 0);
 
-	// Add separator nodes based on special characters
 	for (i = 0; input[i]; i++)
 	{
 		if (input[i] == ';')
@@ -71,7 +68,6 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *input)
 		}
 	}
 
-	// Tokenize the modified input string and add line nodes
 	line = _strtok(input, ";|&");
 	do {
 		line = swap_char(line, 1);
@@ -97,10 +93,8 @@ void go_next(sep_list **list_s, line_list **list_l, data_shell *datash)
 	ls_s = *list_s;
 	ls_l = *list_l;
 
-	// Iterate through separator nodes
 	while (ls_s != NULL && loop_sep)
 	{
-		// Update loop_sep based on status and separator type
 		if (datash->status == 0)
 		{
 			if (ls_s->separator == '&' || ls_s->separator == ';')
@@ -138,13 +132,11 @@ int split_commands(data_shell *datash, char *input)
 	head_s = NULL;
 	head_l = NULL;
 
-	// Parse the input string and add separator and line nodes
 	add_nodes(&head_s, &head_l, input);
 
 	list_s = head_s;
 	list_l = head_l;
 
-	// Execute commands based on separator and line nodes
 	while (list_l != NULL)
 	{
 		datash->input = list_l->line;
@@ -152,23 +144,18 @@ int split_commands(data_shell *datash, char *input)
 		loop = exec_line(datash);
 		free(datash->args);
 
-		// Break if loop condition is met
 		if (loop == 0)
 			break;
 
-		// Move to the next nodes
 		go_next(&list_s, &list_l, datash);
 
-		// Move to the next line node
 		if (list_l != NULL)
 			list_l = list_l->next;
 	}
 
-	// Free allocated memory for separator and line nodes
 	free_sep_list(&head_s);
 	free_line_list(&head_l);
 
-	// Return status based on loop condition
 	if (loop == 0)
 		return (0);
 	return (1);
@@ -197,7 +184,6 @@ char **split_line(char *input)
 	token = _strtok(input, TOK_DELIM);
 	tokens[0] = token;
 
-	// Tokenize the input string and store tokens in an array
 	for (i = 1; token != NULL; i++)
 	{
 		if (i == bsize)

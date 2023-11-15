@@ -10,15 +10,12 @@ char *_strdup(const char *s)
 	char *new;
 	size_t len;
 
-	// Get the length of the string
 	len = _strlen(s);
 
-	// Allocate memory for the duplicate string
 	new = malloc(sizeof(char) * (len + 1));
 	if (new == NULL)
 		return (NULL);
 
-	// Copy the string to the new memory
 	_memcpy(new, s, len + 1);
 	return (new);
 }
@@ -32,7 +29,6 @@ int _strlen(const char *s)
 {
 	int len;
 
-	// Count characters until null terminator
 	for (len = 0; s[len] != 0; len++)
 	{
 	}
@@ -49,7 +45,6 @@ int cmp_chars(char str[], const char *delim)
 {
 	unsigned int i, j, k;
 
-	// Iterate through str to check if all characters are delimiters
 	for (i = 0, k = 0; str[i]; i++)
 	{
 		for (j = 0; delim[j]; j++)
@@ -78,7 +73,6 @@ char *_strtok(char str[], const char *delim)
 	char *str_start;
 	unsigned int i, bool;
 
-	// Initialize if str is not NULL
 	if (str != NULL)
 	{
 		if (cmp_chars(str, delim))
@@ -89,11 +83,9 @@ char *_strtok(char str[], const char *delim)
 	}
 	str_start = splitted;
 
-	// Check if there are more tokens
 	if (str_start == str_end)
 		return (NULL);
 
-	// Tokenize the string
 	for (bool = 0; *splitted; splitted++)
 	{
 		if (splitted != str_start)
@@ -114,7 +106,6 @@ char *_strtok(char str[], const char *delim)
 			bool = 1;
 	}
 
-	// Check if there are more tokens
 	if (bool == 0)
 		return (NULL);
 	return (str_start);
@@ -129,7 +120,6 @@ int _isdigit(const char *s)
 {
 	unsigned int i;
 
-	// Iterate through s to check if all characters are digits
 	for (i = 0; s[i]; i++)
 	{
 		if (s[i] < 48 || s[i] > 57)

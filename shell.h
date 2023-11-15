@@ -30,13 +30,13 @@ extern char **environ;
  */
 typedef struct data
 {
-    char **av;
-    char *input;
-    char **args;
-    int status;
-    int counter;
-    char **_environ;
-    char *pid;
+char **av;
+char *input;
+char **args;
+int status;
+int counter;
+char **_environ;
+char *pid;
 } data_shell;
 
 /**
@@ -46,8 +46,8 @@ typedef struct data
  */
 typedef struct sep_list_s
 {
-    char separator;
-    struct sep_list_s *next;
+char separator;
+struct sep_list_s *next;
 } sep_list;
 
 /**
@@ -57,8 +57,8 @@ typedef struct sep_list_s
  */
 typedef struct line_list_s
 {
-    char *line;
-    struct line_list_s *next;
+char *line;
+struct line_list_s *next;
 } line_list;
 
 /**
@@ -70,10 +70,10 @@ typedef struct line_list_s
  */
 typedef struct r_var_list
 {
-    int len_var;
-    char *val;
-    int len_val;
-    struct r_var_list *next;
+int len_var;
+char *val;
+int len_val;
+struct r_var_list *next;
 } r_var;
 
 /**
@@ -83,10 +83,10 @@ typedef struct r_var_list
  */
 typedef struct builtin_s
 {
-    char *name;
-    int (*f)(data_shell *datash);
+char *name;
+int (*f)(data_shell *datash);
 } builtin_t;
 
-/* Function prototypes for a.c, a2.c, ac, a3.c, c.c, s.c, r.c, g.c, ee, c.c, e.c, e.c, c.c, c.c, gn, _.c, a.c, a1.c, a2.c, g.c, a.c, a2.c, g.c, a.c */
+/* Function prototypes for a.c, a2.c, ac, a3.c, c.c, s.c, r.c, g.c, */
 
 #endif
